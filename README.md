@@ -60,9 +60,13 @@ Google & Bing Scanner that also scan :<br>
 [+] Mysql Manager<br>
 [+] Tools LFI<br>
 
-A video with examples of usage<br>
+An image : 
 
-http://www.youtube.com/watch?v=-M59SEVTevc<br>
+![image](http://doddyhackman.webcindario.com/images/paranoic_17.jpg)
+
+An video : 
+
+[![Alt text for your video](http://img.youtube.com/vi/M59SEVTevc/0.jpg)](http://www.youtube.com/watch?v=M59SEVTevc)
 
 Available for download here :<br>
 
