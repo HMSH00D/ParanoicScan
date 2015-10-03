@@ -107,21 +107,14 @@
 #################################################################################
 #Paranoic Scan 1.7
 #(C) Doddy Hackman 2014
-#
 #Necessary modules
-#
 #http://search.cpan.org/~animator/Color-Output-1.05/Output.pm
-#http://search.cpan.org/~nanis/Crypt-SSLeay-0.72/SSLeay.pm
-#http://search.cpan.org/~exiftool/Image-ExifTool-9.27/lib/Image/ExifTool.pod
-#http://search.cpan.org/~timb/DBI-1.630/DBI.pm
-#http://search.cpan.org/~capttofu/DBD-mysql-4.025/lib/DBD/mysql.pm
-#
 #ppm install http://trouchelle.com/ppm/Color-Output.ppd
 #ppm install http://www.eekboek.nl/dl/ppms/Crypt-SSLeay.ppd
+#http://search.cpan.org/~exiftool/Image-ExifTool-9.27/lib/Image/ExifTool.pod
 #ppm install http://trouchelle.com/ppm/Image-ExifTool.ppd
-#ppm install http://www.bribes.org/perl/ppm/DBI.ppd
-#ppm install http://www.bribes.org/perl/ppm/DBD-mysql.ppd
-#
+#http://search.cpan.org/~timb/DBI-1.630/DBI.pm
+#http://search.cpan.org/~capttofu/DBD-mysql-4.025/lib/DBD/mysql.pm
 #The arrays are a collection of several I found on the web
 #
 #[++] Old Options
@@ -1158,24 +1151,24 @@ text-decoration: none;
 <center>
 <br><h1>Logs - ParanoicScan -</h1><br><br>
 <table border=1>
-<td><center><b>Logs</b></td><tr>
-<td><center><a href=kobra.html>K0bra</a></center></td><tr>
-<td><center><a href=sqli.html>SQLI Links</a></center></td><tr>
-<td><center><a href=bypass.html>ByPass</a></center></td><tr>
-<td><center><a href=jetdb.html>JetDB</a></center></td><tr>
-<td><center><a href=mssql.html>MSSQL</a></center></td><tr>
-<td><center><a href=oracle.html>Oracle</a></center></td><tr>
-<td><center><a href=rfi.html>RFI</a></center></td><tr>
-<td><center><a href=lfi.html>LFI</a></center></td><tr>
-<td><center><a href=xss.html>XSS</a></center></td><tr>
-<td><center><a href=fpd.html>Full Path Discloure</a></center></td><tr>
-<td><center><a href=csrf.html>Cross Site Request Forgery</a></center></td><tr>
-<td><center><a href=fsd.html>Full Source Discloure</a></center></td><tr>
-<td><center><a href=paths.html>Paths</a></center></td><tr>
-<td><center><a href=admin.html>Admins</a></center></td><tr>
-<td><center><a href=hash.html>Hashes</a></center></td><tr>
-<td><center><a href=http.html>HTTP FingerPrinting</a></center></td><tr>
-<td><center><a href=exploitdb.html>ExploitDB</a></center></td><tr>
+<td><b>Logs</b></td><tr>
+<td><a href=kobra.html>K0bra</a></td><tr>
+<td><a href=sqli.html>SQLI Links</a></td><tr>
+<td><a href=bypass.html>ByPass</a></td><tr>
+<td><a href=jetdb.html>JetDB</a></td><tr>
+<td><a href=mssql.html>MSSQL</a></td><tr>
+<td><a href=oracle.html>Oracle</a></td><tr>
+<td><a href=rfi.html>RFI</a></td><tr>
+<td><a href=lfi.html>LFI</a></td><tr>
+<td><a href=xss.html>XSS</a></td><tr>
+<td><a href=fpd.html>Full Path Discloure</a></td><tr>
+<td><a href=csrf.html>Cross Site Request Forgery</a></td><tr>
+<td><a href=fsd.html>Full Source Discloure</a></td><tr>
+<td><a href=paths.html>Paths</a></td><tr>
+<td><a href=admin.html>Admins</a></td><tr>
+<td><a href=hash.html>Hashes</a></td><tr>
+<td><a href=http.html>HTTP FingerPrinting</a></td><tr>
+<td><a href=exploitdb.html>ExploitDB</a></td><tr>
 </table>
 
 <br><br><h1><b>-- == (C) Doddy Hackman 2014 == --</b></h1>
@@ -2968,20 +2961,24 @@ sub load_locateip {
 
             printear( "\n[+] Getting info\n\n", "text", "13", "5" );
 
-            $re = toma( "http://whatismyipaddress.com/ip/" . $target );
+            $total =
+"http://www.melissadata.com/lookups/iplocation.asp?ipaddress=$target";
+            $re = toma($total);
 
-            if ( $re =~ /<tr><th>City:<\/th><td>(.*)<\/td><\/tr>/ ) {
-                printear( "[+] City : $1\n", "text", "7", "5" );
+            if ( $re =~ /City<\/td><td align=(.*)><b>(.*)<\/b><\/td>/ ) {
+                printear( "[+] City : $2\n", "text", "7", "5" );
             }
             else {
-                printear( "[-] Information not found\n", "text", "5", "5" );
+                printear( "[-] Not Found\n", "text", "5", "5" );
                 adios();
             }
-            if ( $re =~ /<th>Country:<\/th><td>(.*) <img/ ) {
-                printear( "[+] Country : $1\n", "text", "7", "5" );
+            if ( $re =~ /Country<\/td><td align=(.*)><b>(.*)<\/b><\/td>/ ) {
+                printear( "[+] Country : $2\n", "text", "7", "5" );
             }
-            if ( $re =~ /<tr><th>State\/Region:<\/th><td>(.*)<\/td><\/tr>/ ) {
-                printear( "[+] State or Region : $1\n", "text", "7", "5" );
+            if ( $re =~
+                /State or Region<\/td><td align=(.*)><b>(.*)<\/b><\/td>/ )
+            {
+                printear( "[+] State or Region : $2\n", "text", "7", "5" );
             }
 
             printear( "\n[+] Getting Hosts\n\n", "text", "13", "5" );
@@ -2991,9 +2988,7 @@ sub load_locateip {
             while ( $code =~ /whois\/(.*?)\">Whois/g ) {
                 my $dns = $1;
                 chomp $dns;
-                if ( $dns ne "" ) {
-                    printear( "[DNS] : $dns\n", "text", "7", "5" );
-                }
+                printear( "[DNS] : $dns\n", "text", "7", "5" );
             }
         }
     }
