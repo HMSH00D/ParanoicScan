@@ -57,7 +57,7 @@ Google & Bing Scanner that also scan :<br>
 [+] Generator for XSS Bypass<br>
 [+] Generator links to tiny url<br>
 [+] Finder and downloader exploits on Exploit-DB<br>
-[+] Mysql Manager<br>
+[+] Mysql Manager<b>rw
 [+] Tools LFI<br>
 
 An image : 
@@ -66,7 +66,7 @@ An image :
 
 An video : 
 
-[![Alt text for your video](http://img.youtube.com/vi/M59SEVTevc/0.jpg)](http://www.youtube.com/watch?v=M59SEVTevc)
+[![Alt text for your video](http://img.youtube.com/vi/-M59SEVTevc/0.jpg)](http://www.youtube.com/watch?v=-M59SEVTevc)
 
 Available for download here :<br>
 
